@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Personal page.</title>
+</head>
+
+<body>
+    The first name is <span data-bind="text: firstName"></span>
+    <span data-bind="text: age() >= 18 ? 'adult': 'young'"></span> person.
+    <span data-bind="html: about"></span>
+    <!-- <div data-bind="css: {redStyle: favoriteColor() == 'red', greenStyle: favoriteColor() == 'green'}">
+        John's favorite  color is <span data-bind="text: favoriteColor"></span>
+    </div> -->
+    <div data-bind="style: {color: favoriteColor()}">
+        John's favorite color is <span data-bind="text: favoriteColor"></span>
+    </div>
+    <div>John's favorite site is <a data-bind="attr:{href: favoriteUrl()}">PacktPub</a></div>
+    <div data-bind="visible: favoriteSite().length > 0">
+        John's favorite site is <span data-bind="text: favoriteSite"></span>
+    </div>
+    <script src="./scripts/knockout-3.5.0.debug.js"></script>
+    <script src="./scripts/person.js"></script>
+    <link rel="stylesheet" type="text/css" href="./contents/style.css" media="screen">
+</body>
+
+</html>

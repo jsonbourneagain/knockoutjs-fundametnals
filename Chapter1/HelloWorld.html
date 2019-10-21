@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello world with Knockout.js</title>
+</head>
+
+<body>
+    <span data-bind="text: message"></span>
+    <input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'"/>
+    <input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'">
+    <input type="text" data-bind="value: name, enable: isNameEnabled">
+    <button data-bind="click: addExclamationMark">Add Exclamation mark</button>
+    <script src="./scripts/knockout-3.5.0.debug.js"></script>
+</body>
+
+</html>
+<script>
+    var viewModel = {
+        message: ko.observable(),
+        addExclamationMark: function () {
+            this.message(this.message() + "!")
+        }
+    };
+    viewModel.message("Hello world!");
+    ko.applyBindings(viewModel);
+    viewModel.message.subscribe(
+        function (newValue) {
+           // alert("new message is " + newValue);
+        }
+    )
+    viewModel.message.extend({ notify: 'always' });
+    viewModel.message.extend({ rateLimit: 100 });
+</script>
