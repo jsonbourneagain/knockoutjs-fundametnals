@@ -20,8 +20,26 @@
     <div data-bind="visible: favoriteSite().length > 0">
         John's favorite site is <span data-bind="text: favoriteSite"></span>
     </div>
-    <form >
+    <form>
         The first name is <input type="text" data-bind="value: firstName">
+    </form>
+    <div>
+        John's age is <span data-bind="text: age"></span>.
+        <form data-bind="submit: growOld">
+            <button type="submit">Grow old</button>
+        </form>
+    </div>
+    <div>
+        <div data-bind="event: {mouseover: showAbout, mouseout: hideAbout}">
+            Mouse over to view the information about John.
+        </div>
+        <div data-bind="visible: aboutEnabled">
+            John's favorite site is <a href="http://www.packtpub.com">PacktPub</a>.
+        </div>
+    </div>
+    <form>
+        <input type="checkbox" data-bind="checked: isMarried">
+        Is married
     </form>
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/person.js"></script>
