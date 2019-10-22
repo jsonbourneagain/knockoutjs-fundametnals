@@ -15,7 +15,8 @@
         <input data-bind='value: newChild, valueUpdate: "afterkeydown"' />
         <button type="submit" data-bind="enable: addChildEnabled">Add</button>
         <p>Person's children:</p>
-        <select multiple="multiple" size="7" data-bind="options: children"></select>
+        <select multiple="multiple" size="7" data-bind="options: children, selectedOptions: selectedChildren"></select>
+        <button data-bind="click: removeSelected, enable: removeSelectedEnabled">Remove</button>
     </form>
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
