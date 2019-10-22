@@ -14,11 +14,13 @@
                 <th>Age</th>
             </tr>
         </thead>
-        <tbody data-bind="foreach: children">
-            <tr>
-                <td data-bind="text: firstName"></td>
-                <td data-bind="text: age"></td>
-            </tr>
+        <ko foreach: children>
+            <tbody>
+                <tr>
+                    <td data-bind="text: firstName"></td>
+                    <td data-bind="text: age"></td>
+                </tr>
+        </ko>
         </tbody>
     </table>
 
