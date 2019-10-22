@@ -7,12 +7,13 @@
 </head>
 
 <body>
-    <form>
-        <input type="checkbox" data-bind="checked: showAbout">
-        Show about
-    </form>
-    <!-- ko ifnot: !showAbout()-->
-    John's favorite site is <a href='http://www.packtpub.com'>PacktPub</a>.
+    <!-- <div data-bind="with: wife">
+        Wife's fist name: <span data-bind="text: firstName"></span>.<br />
+        Wife's last name: <span data-bind="text: lastName"></span>.
+    </div> -->
+    <!-- ko with: wife-->
+    Wife's first name: <span data-bind="text: firstName"></span>.<br />
+    Wife's last name: <span data-bind="text: lastName"></span>.
     <!-- /ko -->
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
