@@ -6,7 +6,8 @@ var person = {
     favoriteColor: "red",
     favoriteUrl: "http://www.packtpub.com",
     favoriteSite: "PackPub",
-    isMarried: false
+    isMarried: false,
+    wife: ""
 };
 
 // viewmodel
@@ -31,7 +32,7 @@ var personViewModel = function () {
         self.aboutEnabled(false);
     };
     self.isMarried = ko.observable(person.isMarried);
-
+    self.wife = ko.observable(person.wife);
 };
 // apply
 
