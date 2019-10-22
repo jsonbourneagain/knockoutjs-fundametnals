@@ -18,6 +18,10 @@ var personViewModel = function () {
     self.favoriteColor = ko.observable(person.favoriteColor);
     self.favoriteUrl = ko.observable(person.favoriteUrl);
     self.favoriteSite = ko.observable(person.favoriteSite);
+    self.growOld = function () {
+        var previousAge = self.age();
+        self.age(previousAge + 1);
+    }
 };
 // apply
 
