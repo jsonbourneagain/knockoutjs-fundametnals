@@ -1,15 +1,17 @@
 // model
 var person = {
-    wife:{
-        firstName: "Jessica",
-        lastName: "Doe"
-    }
+    firstName: "John",
+    lastName: "Doe"
 };
 // viewmodel
 
 var PersonViewModel = function () {
     var self = this;
-    self.wife = ko.observable(person.wife)
+    self.firstName = ko.observable(person.firstName);
+    self.lastName = ko.observable(person.lastName);
+    self.fullName = ko.computed(function () {
+        return self.firstName() + " " + self.lastName();
+    })
 };
 // apply
 
