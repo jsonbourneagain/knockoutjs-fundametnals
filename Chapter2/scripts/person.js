@@ -1,18 +1,23 @@
 // model
 var person = {
-    firstName: "John",
-    lastName: "Doe"
+    children: ["Jonnie", "Jane", "Richard", "Mary"]
 };
 // viewmodel
 
-var PersonViewModel = function () {
+var PersonViewModel = function() {
     var self = this;
-    self.firstName = ko.observable(person.firstName);
-    self.lastName = ko.observable(person.lastName);
-    self.fullName = ko.computed(function () {
-        return self.firstName() + " " + self.lastName();
-    })
-};
+    self.children = ko.observableArray(person.children);
+    self.newChild = ko.observable("");
+    self.addChildEnabled = ko.computed(function() {
+      return self.newChild().length > 0;
+    });
+    self.addChild = function() {
+      if (self.addChildEnabled()) {
+        self.children.push(self.newChild());
+        self.newChild("");
+      }
+    };
+  };
 // apply
 
 ko.applyBindings(PersonViewModel);

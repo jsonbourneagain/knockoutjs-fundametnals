@@ -7,9 +7,16 @@
 </head>
 
 <body>
-    The first name: <span data-bind="text: firstName"></span><br />
-    The last name: <span data-bind="text: lastName"></span><br />
-    The full name: <span data-bind="text: fullName"></span>
+    <!-- <form>
+        <select multiple="multiple" data-bind="options: children"></select>
+    </form> -->
+    <form data-bind="submit: addChild">
+        New child:
+        <input data-bind='value: newChild, valueUpdate: "afterkeydown"' />
+        <button type="submit" data-bind="enable: addChildEnabled">Add</button>
+        <p>Person's children:</p>
+        <select multiple="multiple" size="7" data-bind="options: children"></select>
+    </form>
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/person.js"></script>
