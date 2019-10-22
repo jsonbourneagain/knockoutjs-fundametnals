@@ -7,9 +7,20 @@
 </head>
 
 <body>
-    <form>
-        <select multiple="multiple" data-bind="options: children, selectedOptions: selectedChildren"></select>
-    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: children">
+            <tr>
+                <td data-bind="text: firstName"></td>
+                <td data-bind="text: age"></td>
+            </tr>
+        </tbody>
+    </table>
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/person.js"></script>

@@ -1,14 +1,17 @@
 // model
 var person = {
-    children: ["Jonnie", "Jane", "Richard", "Mary"],
-    selectedChildren: ["Jonnie", "Richard"]
+    children: [
+        { firstName: "Jonnie", age: 3 },
+        { firstName: "Jane", age: 5 },
+        { firstName: "Richard", age: 7 },
+        { firstName: "Mary", age: 9 },
+    ]
 };
 // viewmodel
 
-var PersonViewModel = function(){
+var PersonViewModel = function () {
     var self = this;
     self.children = person.children;
-    self.selectedChildren = person.selectedChildren
 };
 // apply
 
