@@ -76,3 +76,6 @@ D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter
 D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\obj\Debug\HomeLibraryWithKnockout.csproj.CopyComplete
 D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\obj\Debug\HomeLibraryWithKnockout.dll
 D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\obj\Debug\HomeLibraryWithKnockout.pdb
+D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\bin\DelegateDecompiler.dll
+D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\bin\Mono.Reflection.dll
+D:\ExperimentsDontDelete\KnockOutJs\Fundamentals\knockoutjs-fundametnals\Chapter3\HomeLibrary\HomeLibraryWithKnockout\bin\PerpetuumSoft.Knockout.dll

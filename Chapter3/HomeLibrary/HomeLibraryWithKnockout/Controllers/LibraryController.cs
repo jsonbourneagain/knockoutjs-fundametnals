@@ -1,4 +1,5 @@
 ﻿using HomeLibraryWithKnockout.Models;
+using PerpetuumSoft.Knockout;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,28 +8,34 @@ using System.Web.Mvc;
 
 namespace HomeLibraryWithKnockout.Controllers
 {
-    public class LibraryController : Controller
+    public class LibraryController : KnockoutController
     {
-        private static readonly LibraryModel Library = new LibraryModel();
+        private static LibraryModel Library;
+
+        static LibraryController()
+        {
+            var model = new LibraryModel
+            {
+                Name = "My home library",
+                Books = new List<BookModel>(),
+                NextId = 1
+            };
+            model.AddBook(new BookModel { Title = "Oliver Twist", Author = "Charles Dickens", Year = 1837 });
+            model.AddBook(new BookModel { Title = "Winnie-the-Pooh", Author = "A. A. Milne", Year = 1926 });
+            model.AddBook(new BookModel { Title = "The Hobbit", Author = "J. R. R. Tolkien", Year = 1937 });
+            model.AddBook(new BookModel { Title = "The Bicentennial Man", Author = "Isaac Asimov", Year = 1976 });
+            model.AddBook(new BookModel { Title = "The Green Mile", Author = "Stephen King", Year = 1996 });
+            Library = model;
+        }
 
         public ActionResult Index()
         {
             return View(Library);
         }
 
-        public JsonResult GetName()
+        public ActionResult Edit(int index)
         {
-            return Json(Library.Name, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetBooks()
-        {
-            return Json(Library.GetBooks(), JsonRequestBehavior.AllowGet);
-        }
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            return View(Library.GetBook(id));
+            return View(Library.Books[index]);
         }
 
         [HttpPost]
@@ -38,7 +45,13 @@ namespace HomeLibraryWithKnockout.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult Add()
+        public ActionResult EditRedirect(LibraryModel clientLibrary, int index)
+        {
+            Library = clientLibrary;
+            return Json(new { redirect = true, url = "Library/Edit?index=" + index });
+        }
+
+        public ActionResult Add(LibraryModel clientLibrary)
         {
             var book = new BookModel
             {
@@ -46,14 +59,16 @@ namespace HomeLibraryWithKnockout.Controllers
                 Author = "Unknown",
                 Year = DateTime.Now.Year
             };
-            Library.AddBook(book);
-            return Json(Library.GetBooks(), JsonRequestBehavior.AllowGet);
+            clientLibrary.AddBook(book);
+            Library = clientLibrary;
+            return Json(clientLibrary);
         }
 
-        public JsonResult Remove(int id)
+        public ActionResult Remove(LibraryModel clientLibrary, int index)
         {
-            Library.RemoveBook(id);
-            return Json(Library.GetBooks(), JsonRequestBehavior.AllowGet);
+            clientLibrary.Books.RemoveAt(index);
+            Library = clientLibrary;
+            return Json(clientLibrary);
         }
     }
 }
