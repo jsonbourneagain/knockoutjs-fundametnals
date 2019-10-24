@@ -3,24 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Personal page.</title>
+    <title>Data mapping.</title>
 </head>
 
 <body>
-    <form>
-        <p>This is a demo of ko.toJS(viewModel).</p>
-        <span>Library name: </span><span data-bind="text: jsonObject['LibraryName']"></span><br />
-        <span>Number of books: </span><span data-bind="text: jsonObject['AmountOfBooks']"></span><br />
-        <span>HasBooks: </span><span data-bind="text: jsonObject['HasBooks']"></span><br />
-    </form>
-    <form>
-        <p>This is a demo of ko.toJSON(viewModel).</p>
-        <span>JSON representation of the library viewmode: </span><span data-bind="text: jsonString"></span><br />
-        <p>Another tool for debugging. To make a live representation of your viewmodel use this</p>
-        <pre data-bind="text: ko.toJSON($root,null, 2)"></pre>
-    </form>
+    The library <span data-bind="text: libraryViewModel['LibraryName']"> </span> contains <span data-bind="text: libraryViewModel['AmountOfBooks']"></span> books.
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/chapter5.js"></script>
+    <script src="./scripts/knockout.mapping.js"></script>
     <link rel="stylesheet" type="text/css" href="./contents/style.css" media="screen">
 </body>
 
