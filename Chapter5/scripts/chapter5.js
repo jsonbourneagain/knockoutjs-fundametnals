@@ -1,36 +1,26 @@
-ko.bindingHandlers.slideVisible = {
-    init: function (element, valueAccessor) {
-        var value = valueAccessor();
-        var valueUnwrapped = ko.unwrap(value);
-        $(element).toggle(valueUnwrapped);
-    },
-    update: function (element, valueAccessor, allBindings) {
-        var value = valueAccessor();
-        var valueUnwrapped = ko.unwrap(value);
-        var duration = allBindings.get('slideDuration') || 400;
-        if (valueUnwrapped == true)
-            $(element).slideDown(duration);
-        else
-            $(element).slideUp(duration);
-    }
+ko.extenders.numeric = function (target, precision) {
+    var result = ko.pureComputed({
+        read: target,
+        write: function (newValue) {
+            var current = target(),
+                roundingMultiplier = Math.pow(10, precision),
+                newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
+                valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
+            if (valueToWrite !== current) {
+                target(valueToWrite);
+            }
+            else {
+                if (newValue !== current) {
+                    target.notifySubscribers(valueToWrite);
+                }
+            }
+        }
+    }).extend({ notify: 'always' });
+    result(target());
+    return result;
 };
-ko.bindingHandlers.hasFocus = {
-    init: function (element, valueAccessor) {
-        $(element).focus(function () {
-            var value = valueAccessor();
-            value(true);
-        });
-        $(element).blur(function () {
-            var value = valueAccessor();
-            value(false);
-        });
-    },
-    update: function (element, valueAccessor) {
-        var value = valueAccessor();
-        var valueUnwrapped = ko.unwrap(value);
-        if (valueUnwrapped)
-            element.focus();
-        else
-            element.blur();
-    }
-};
+// function AppViewModel(one, two) {
+//     this.myNumberOne = ko.observable(one).extend({ numeric: 0 });
+//     this.myNumberTwo = ko.observable(two).extend({ numeric: 2 });
+// }
+// ko.applyBindings(new AppViewModel(221.2234, 123.4535));

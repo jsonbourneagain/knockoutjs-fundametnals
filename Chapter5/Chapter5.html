@@ -9,13 +9,13 @@
 <body>
 
     <p>
-        Name:
-        <input data-bind="hasFocus: editingName">
+        <input data-bind="value: myNumberOne">
+        (round to whole number)
     </p>
-    <div data-bind="visible: editingName">
-        You're editing the name.
-    </div>
-    <button data-bind="enable: !editingName(), click: function(){editingName(true)}">Edit name</button>
+    <p>
+        <input data-bind="value: myNumberTwo">
+        (round to two decimals)
+    </p>
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/chapter5.js"></script>
@@ -27,8 +27,9 @@
 
 </html>
 <script>
-    var viewModel = {
-        editingName: ko.observable()
-    };
-    ko.applyBindings(viewModel);
+    function AppViewModel(one, two) {
+        this.myNumberOne = ko.observable(one).extend({ numeric: 0 });
+        this.myNumberTwo = ko.observable(two).extend({ numeric: 2 });
+    }
+    ko.applyBindings(new AppViewModel(221.2234, 123.4535));
 </script>
