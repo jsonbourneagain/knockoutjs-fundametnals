@@ -3,15 +3,31 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Data mapping.</title>
+    <title>Custom binding</title>
 </head>
 
 <body>
-    The library <span data-bind="text: libraryViewModel['LibraryName']"> </span> contains <span data-bind="text: libraryViewModel['AmountOfBooks']"></span> books.
+
+    <div data-bind="slideVisible:giftWrap, slideDuration: 600">
+        You have selected the option.
+    </div>
+    <label>
+        <input type="checkbox" data-bind="checked: giftWrap">
+        giftWrap
+    </label>
+
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/chapter5.js"></script>
-    <script src="./scripts/knockout.mapping.js"></script>
+    <script src="./scripts/jquery-3.4.1.min.js"></script>
+
+    <!-- <script src="./scripts/knockout.mapping.js"></script> -->
     <link rel="stylesheet" type="text/css" href="./contents/style.css" media="screen">
 </body>
 
 </html>
+<script>
+    var viewModel = {
+        giftWrap: ko.observable(true)
+    };
+    ko.applyBindings(viewModel);
+</script>

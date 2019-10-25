@@ -1,14 +1,16 @@
-// model
-var libraryModel = { LibraryName: "My home library", AmountOfBooks: "5" };
-var libraryViewModel = {
-    LibraryName: ko.observable("My home library"),
-    AmountOfBooks: ko.observable("5")
-}
-// var libraryViewModel = ko.mapping.fromJS(libraryModel);
-
-// getModelFromServer(){
-//     return { LibraryName: "My home library", AmountOfBooks: "5" }
-// }
-// apply
-
-ko.applyBindings(libraryViewModel);
+ko.bindingHandlers.slideVisible = {
+    init: function (element, valueAccessor) {
+        var value = valueAccessor();
+        var valueUnwrapped = ko.unwrap(value);
+        $(element).toggle(valueUnwrapped);
+    },
+    update: function (element, valueAccessor, allBindings) {
+        var value = valueAccessor();
+        var valueUnwrapped = ko.unwrap(value);
+        var duration = allBindings.get('slideDuration') || 400;
+        if (valueUnwrapped == true)
+            $(element).slideDown(duration);
+        else
+            $(element).slideUp(duration);
+    }
+};
