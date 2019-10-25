@@ -8,13 +8,14 @@
 
 <body>
 
-    <div data-bind="slideVisible:giftWrap, slideDuration: 600">
-        You have selected the option.
+    <p>
+        Name:
+        <input data-bind="hasFocus: editingName">
+    </p>
+    <div data-bind="visible: editingName">
+        You're editing the name.
     </div>
-    <label>
-        <input type="checkbox" data-bind="checked: giftWrap">
-        giftWrap
-    </label>
+    <button data-bind="enable: !editingName(), click: function(){editingName(true)}">Edit name</button>
 
     <script src="./scripts/knockout-3.5.0.debug.js"></script>
     <script src="./scripts/chapter5.js"></script>
@@ -27,7 +28,7 @@
 </html>
 <script>
     var viewModel = {
-        giftWrap: ko.observable(true)
+        editingName: ko.observable()
     };
     ko.applyBindings(viewModel);
 </script>
